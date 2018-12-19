@@ -14,7 +14,7 @@ def books(request):
     for book in books:
         x+=1
     if x>4:
-        x=x-4
+        x=x-2
     recent_books = Book.objects.all()[x::-1]
 
     context = {
