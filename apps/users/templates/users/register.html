@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    {% load static %}
+    <!--<link rel="stylesheet" type="text/css" href="main.css"> -->
+    <link rel="stylesheet" type="text/css" href="{% static 'users/main.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Registration</h1>
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        <form action="{% url 'users:verify_register' %}" method="post">
+            {% csrf_token %}
+            <div class="form_group form-inline">
+                <label for="f_name">First Name: </label>
+                <input type="text" class="form-control" name="f_name">
+            </div>
+            <div class="form_group form-inline">
+                <label for="l_name">Last Name: </label>
+                <input type="text" class="form-control" name="l_name">
+            </div>
+            <div class="form_group form-inline">
+                <label for="username">Username: </label>
+                <input type="text" class="form-control" name="username">
+            </div>
+            <div class="form_group form-inline">
+                <label for="password">Password: </label>
+                <input type="password" class="form-control" name="password">
+            </div>
+            <div class="form_group form-inline">
+                <label for="confirm_password">Confirm Password: </label>
+                <input type="password" class="form-control" name="confirm_password">
+            </div>
+            <input type="submit" value="Submit">
+        </form>
+        <h4>Already a member? <a href="{% url 'users:login' %}">Login here.</a></h4>
+    </div>
+</body>
+</html>

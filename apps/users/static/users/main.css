@@ -1,0 +1,27 @@
+.container {
+    margin-top: 50px;
+    width: 50%;
+}
+.form-inline {
+    margin-top: 10px;
+}
+.form-inline input {
+    horiz-align: right;
+}
+label {
+    text-align: right;
+    width: 100px;
+}
+label, input {
+    /* in order to define widths */
+    display: inline-block;
+}
+label + input {
+    width: 30%;
+    /* large margin-right to force the next element to the new-line
+       and margin-left to create a gutter between the label and input */
+    margin: 0 auto 0 auto;
+}
+input + input {
+    float: right;
+}

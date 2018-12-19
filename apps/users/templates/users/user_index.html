@@ -1,0 +1,19 @@
+{% extends "books/logged_in_template.html" %}
+
+{% block content %}
+
+        <h1 class="title_of_form">Welcome, {{ f_name }}'s Home Page</h1>
+    <div class="user_info">
+        <p>User Alias: {{ username }}</p>
+        <p>Name: {{ f_name }} {{ l_name }}</p>
+{#        <p>Total reviews{{ books.total_reviewed }}</p>#}
+    </div>
+    <p>Posted Reviews on the following books:</p>
+    <ul>
+        {% for book in books %}
+            <li><a href="{% url 'books:add_review' %}{{ book.id }}"></a>{{ book.title }}</li>
+        {% endfor %}
+
+    </ul>
+
+{% endblock %}
